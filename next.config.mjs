@@ -1,22 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove static export - Vercel supports serverless functions on free tier
-  // output: 'export', // Remove this line
-  // trailingSlash: true, // Remove this line
-  // skipTrailingSlashRedirect: true, // Remove this line
-  // distDir: 'out', // Remove this line
-  
-  // ESLint configuration
+  // Minimal configuration for Vercel deployment
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
-  // TypeScript configuration
   typescript: {
     ignoreBuildErrors: true,
   },
-  
-  // Image optimization - keep unoptimized for compatibility
   images: {
     unoptimized: true,
   },
