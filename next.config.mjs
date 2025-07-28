@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static exports for Vercel Hobby tier
-  output: 'export',
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
-  distDir: 'out',
+  // Remove static export - Vercel supports serverless functions on free tier
+  // output: 'export', // Remove this line
+  // trailingSlash: true, // Remove this line
+  // skipTrailingSlashRedirect: true, // Remove this line
+  // distDir: 'out', // Remove this line
   
   // ESLint configuration
   eslint: {
@@ -16,7 +16,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Image optimization
+  // Image optimization - keep unoptimized for compatibility
   images: {
     unoptimized: true,
   },
