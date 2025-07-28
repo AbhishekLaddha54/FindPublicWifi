@@ -9,6 +9,7 @@ import VenueCard from "@/components/VenueCard"
 import type { Venue } from "@/lib/types"
 import { calculateDistance } from "@/lib/utils"
 import RadiusSlider from "@/components/RadiusSlider"
+import { fetchVenuesClientSide } from "@/lib/fetchVenues"
 
 export default function HomePage() {
   const [venues, setVenues] = useState<Venue[]>([])
@@ -54,16 +55,12 @@ export default function HomePage() {
   const fetchVenues = async (lat: number, lon: number) => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/venues?lat=${lat}&lon=${lon}&radius=${radius[0]}`)
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch venues")
-      }
-
-      const data = await response.json()
+      // Use client-side fetching instead of API route
+      const venuesData = await fetchVenuesClientSide(lat, lon, radius[0])
 
       // Calculate distances and sort
-      const venuesWithDistance = data.venues
+      const venuesWithDistance = venuesData
         .map((venue: Venue) => ({
           ...venue,
           distance: calculateDistance(lat, lon, venue.lat, venue.lon),
