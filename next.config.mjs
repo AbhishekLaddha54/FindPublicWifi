@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Minimal configuration for Vercel deployment
+  // Minimal configuration for successful deployment
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,12 +11,12 @@ const nextConfig = {
     unoptimized: true,
   },
   
-  // PWA and performance optimizations
-  experimental: {
-    optimizeCss: true,
-  },
+  // Remove experimental features that require additional dependencies
+  // experimental: {
+  //   optimizeCss: true, // This was causing the critters module error
+  // },
   
-  // Security headers
+  // Basic security headers
   async headers() {
     return [
       {
